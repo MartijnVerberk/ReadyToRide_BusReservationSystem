@@ -1,7 +1,7 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    password: rajmal
+    password: admin
     url: jdbc:mysql://localhost:3306/bus_reservation_database
     username: root
   jpa:

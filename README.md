@@ -116,7 +116,7 @@ http://localhost:8080/swagger-ui/index.html#/
    https://github.com/Rajmalpankaj786/ReadyToRide_BusReservationSystem.git
    ```
 2.Open MySQL Create the new Database and Create application.yml file: <br></br>
-spring:<br></br>
+spring:<br></br>np
   datasource:<br></br>
     driver-class-name: com.mysql.cj.jdbc.Driver<br></br>
     password: rajmal<br></br>
