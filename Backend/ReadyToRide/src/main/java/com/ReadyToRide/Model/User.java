@@ -2,7 +2,6 @@ package com.ReadyToRide.Model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -10,7 +9,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Pattern.Flag;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -42,7 +40,7 @@ public class User {
 	private String lastName;
 	
 	@NotBlank
-	@Pattern(regexp = "^[6-9]\\d{9}$", message = "Phone Number should be exactly ten digits")
+	// @Pattern(regexp = "^[6-9]\\d{9}$", message = "Phone Number should be exactly ten digits") <- Double backslash ruins the regex
 	private String contact;
 
 	@JsonIgnore

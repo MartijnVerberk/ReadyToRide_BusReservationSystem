@@ -1,6 +1,6 @@
 let currUserID = JSON.parse(localStorage.getItem('uuid'));
 
-if(currUserID == undefined){
+if (currUserID == undefined) {
     currUserID = null;
 }
 
@@ -58,8 +58,8 @@ function sign_in() {
         "email": email,
         "password": password
     }
-    
-    if (signInObj.email === "a@gmail.com" && signInObj.password === "123456") loginAdmin(signInObj);
+
+    if (signInObj.email === "admin@gmail.com" && signInObj.password === "123456") loginAdmin(signInObj);
     else loginUser(signInObj);
 }
 
@@ -68,26 +68,26 @@ function loginUser(obj) {
     let url = "http://localhost:8080/user/login";
 
     fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json', // Specify that we're sending JSON data
-            },
-            body: JSON.stringify(obj), // Convert the data to JSON format
-        })
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json', // Specify that we're sending JSON data
+        },
+        body: JSON.stringify(obj), // Convert the data to JSON format
+    })
         .then(response => response.json())
         .then(data => {
             // console.log(data);
-            if (data.userId== null) {
+            if (data.userId == null) {
                 openCustomAlert(data.message);
             } else {
                 showToast("User Login SucessFull!!");
-                
+
                 openCustomAlert("WelCome " + data.type);
-                
+
                 localStorage.setItem("uuid", JSON.stringify(data.uuid));
                 localStorage.setItem("username", JSON.stringify(data.type));
-                
-               window.location.href="http://127.0.0.1:5500/index.html";
+
+                window.location.href = "http://127.0.0.1:3000/index.html";
                 //change page location from here after ssucessfull signup
             }
 
@@ -103,24 +103,24 @@ function loginAdmin(obj) {
     let url = "http://localhost:8080/admin/login";
 
     fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json', // Specify that we're sending JSON data
-            },
-            body: JSON.stringify(obj) // Convert the data to JSON format
-        })
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json', // Specify that we're sending JSON data
+        },
+        body: JSON.stringify(obj) // Convert the data to JSON format
+    })
         .then(response => response.json())
         .then(data => {
             console.log(data)
             if (data.userId == null) {
                 openCustomAlert(data.message);
             } else {
-                
+
                 showToast("Admin Login SucessFull!!");
                 openCustomAlert("WelCome Admin!!");
 
                 localStorage.setItem("uuid", JSON.stringify(data.uuid));
-                
+
                 window.location.href = "../Admin_section/Admin_Home.html";
             }
         })
